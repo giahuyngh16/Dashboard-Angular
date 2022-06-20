@@ -1,0 +1,38 @@
+nz-breadcrumb {
+  margin: 20px 0;
+}
+
+.breadcrumb-link {
+  height: 20px;
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.current {
+  color: #151b22;
+  font-weight: 500;
+}
+
+.previous:hover {
+  color: #8DC63F;
+}
+
+.separator-icon,
+.previous {
+  color: #858688;
+}
+
+.separator-icon {
+  vertical-align: inherit;
+}
+
+::ng-deep {
+  .ant-breadcrumb {
+    font-size: 13px;
+  }
+
+  .ant-breadcrumb-separator {
+    display: inline-flex;
+  }
+}

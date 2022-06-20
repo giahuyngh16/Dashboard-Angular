@@ -1,0 +1,22 @@
+$wide-break: 1200;
+
+@mixin wide-device {
+    @media screen and (max-width: #{$wide-break + 1}px) {
+        @content;
+    }
+}
+@mixin response-in-range($min-break, $max-break) {
+    @media screen and (min-width: #{$min-break}px) and (max-width: #{$max-break}px) {
+        @content;
+    }
+}
+@mixin response-break-up($break) {
+    @media screen and (min-width: #{$break}px) {
+        @content;
+    }
+}
+@mixin response-break-down($break) {
+    @media screen and (max-width: #{$break}px) {
+        @content;
+    }
+}

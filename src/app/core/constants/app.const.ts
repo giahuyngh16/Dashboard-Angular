@@ -1,0 +1,1 @@
+export const CONTRACT_CODE_PREFIX = 'STSSW';

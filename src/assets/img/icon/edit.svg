@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 61.2 (101010) - https://sketch.com -->
+    <title>A6E7418B-B654-4966-9028-19543235DB09@1.5x</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M0,15.833912 L0,20 L4.16608804,20 L16.4532704,7.71281766 L12.2871823,3.54672962 L0,15.833912 Z M19.6750451,4.49104291 C20.1083183,4.05776975 20.1083183,3.35786696 19.6750451,2.92459381 L17.0754062,0.324954867 C16.642133,-0.108318289 15.9422302,-0.108318289 15.5089571,0.324954867 L13.4759061,2.35800583 L17.6419942,6.52409388 L19.6750451,4.49104291 Z" id="path-1"></path>
+    </defs>
+    <g id="Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-590.000000, -444.000000)">
+            <g id="Icons-/-Action-/-Load-/-Cloud-/-Down-/-Outline-Copy-31" transform="translate(590.000000, 444.000000)">
+                <g id="Color">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Mask" fill-rule="nonzero"></g>
+                    <g mask="url(#mask-2)" fill="#151B22" id="🎨-Color">
+                        <g transform="translate(-3.000000, -2.000000)">
+                            <rect x="0" y="0" width="25" height="25"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

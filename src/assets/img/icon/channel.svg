@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>ic_pending_pr</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12.0047518,0.8 C12.885783,0.8 13.6,1.5186085 13.6,2.3983305 L13.6,3.999 L13.6047518,4 C14.485783,4 15.2,4.7186085 15.2,5.5983305 L15.2,7.2016695 C15.2,8.08440306 14.484389,8.8 13.6047518,8.8 L13.6,8.8 L13.6,13.6016695 C13.6,14.4844031 12.884389,15.2 12.0047518,15.2 L2.39524822,15.2 C1.51421696,15.2 0.8,14.4813915 0.8,13.6016695 L0.8,7.2 L2.399,7.2 L2.399,5.6 L0.8,5.6 L0.8,2.3983305 C0.8,1.51559694 1.515611,0.8 2.39524822,0.8 L12.0047518,0.8 Z M11.999,12 L2.399,12 L2.4,13.6014622 L2.82940704,13.6010033 C4.69461111,13.6000852 12,13.6 12,13.6 L11.999,12 Z M12,8.8 L2.4,8.8 L2.4,10.4 L12,10.4 L12,8.8 Z M13.599,5.6 L3.999,5.6 L3.999,7.2 L13.5897736,7.20000013 C13.5965475,7.20000004 13.6,7.2 13.6,7.2 L13.599,5.6 Z M11.999,3.999 L12,2.4 L2.4,2.4 L2.4,4 L11.999,3.999 Z" id="path-1"></path>
+    </defs>
+    <g id="STS-/-Guidelines" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Guidelines-/-2.1_Layout" transform="translate(-283.000000, -701.000000)">
+            <g id="Icons-/-Menu-/-STS-/-Project" transform="translate(283.000000, 701.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="ic_menu_project" fill-rule="nonzero"></g>
+                <g id="Color-/-Default" mask="url(#mask-2)" fill="#000000" fill-rule="evenodd">
+                    <rect id="🎨-Color" x="0" y="0" width="16" height="16"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

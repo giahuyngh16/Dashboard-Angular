@@ -1,0 +1,30 @@
+table {
+  margin: 0 auto;
+  margin-top: 18%;
+  position: relative;
+}
+
+.number-not-found {
+  text-align: center;
+  font-size: 100px;
+  opacity: 0.9;
+  font-weight: bold;
+  color: #898b96;
+}
+
+.title {
+  padding-top: 5%;
+
+  &__not-found {
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    opacity: 0.9;
+    text-shadow: #c3c1c1 0.1em 0.1em 0.2em;
+    font-weight: bold;
+    color: #898b96;
+    position: absolute;
+    top: 17%;
+    left: 25%;
+  }
+}

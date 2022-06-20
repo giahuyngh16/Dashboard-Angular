@@ -1,0 +1,160 @@
+@import 'variables';
+@import 'mixins';
+
+.date-range {
+  width: 100%;
+  min-width: 270px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  font-size: $font-size;
+  height: 41px;
+
+  &.active {
+
+    .control {
+      border-color: $accent-color;
+      transition: $transition-all;
+    }
+
+    .icon{
+      background-color: $color-main;
+      border: solid 1px $color-main;
+
+      i {
+        color: #EBEDF2;
+      }
+    }
+
+    app-sts-icon {
+      @include filter-white;
+    }
+  }
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  font-size: $font-size;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+
+  &.active {
+    .icon {
+      background-color: $color-main;
+      border: solid 1px $color-main;
+      height: 40px;
+
+      i {
+        color: #EBEDF2;
+      }
+
+      app-sts-icon {
+        @include filter-white;
+      }
+    }
+  }
+
+  .select-date {
+    color: #868e96;
+  }
+}
+
+.input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 39px;
+  background: white;
+  color: #868e96;
+  padding: 10px;
+}
+
+.icon {
+  width: 40px;
+  height: 39px;
+  background-color: #ebedf2;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-right: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    color: #868e96;
+  }
+
+  app-sts-icon {
+    @include filter-grey;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 9px;
+  cursor: default;
+
+  &:hover .list-item {
+    color: $accent-color;
+  }
+
+  .active {
+    background-color: #f9f9f9;
+  }
+}
+
+.list-item {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  color: #575962;
+
+  i {
+    color: #aaaaaa;
+    margin: 0 5px;
+    font-size: 12px;
+  }
+}
+
+.content {
+  position: absolute;
+  top: 40px;
+  z-index: 9;
+  right: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.09);
+}
+
+.toggle-icon {
+  width: 40px;
+  &::after {
+    transition: transform linear 300ms;
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    width: 9px;
+    height: 9px;
+    border: solid #A9A9A9;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+  &.open {
+    &::after {
+      top: 19px;
+      transform: rotate(225deg);
+    }
+  }
+}

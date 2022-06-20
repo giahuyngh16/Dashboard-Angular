@@ -1,0 +1,14 @@
+<div class="sts-input" [class.sts-input--focused]="focused">
+    <div class="sts-input__icon" *ngIf="icon">
+        <i *ngIf="!isImportedIcon" nz-icon [nzType]="icon" nzTheme="outline"></i>
+        <app-sts-icon *ngIf="isImportedIcon" [width]="16" [height]="16" [icon]="icon"></app-sts-icon>
+    </div>
+    <div class="sts-input__input">
+        <input type="text"
+            [placeholder]="placeholder"
+            [(ngModel)]="value"
+            (ngModelChange)="$subject.next()"
+            (focus)="onFocus()"
+            (blur)="onBlur()">
+    </div>
+</div>

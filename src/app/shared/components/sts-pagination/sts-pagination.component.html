@@ -1,0 +1,16 @@
+<div class="nz-pagination slide-down-enter-active">
+  <div class="nz-pagination--option">
+    <span class="mr-2">Show</span>
+    <nz-select [(ngModel)]="paging.take" (ngModelChange)="onChangePageSize()">
+      <nz-option *ngFor="let item of PAGE_SIZE" [nzValue]="item" [nzLabel]="item"></nz-option>
+    </nz-select>
+    <span class="ml-2">Total {{ paging.total}} records found.</span>
+  </div>
+  <nz-pagination 
+    [nzSize]="'small'"
+    [nzPageIndex]="paging.pageIndex" 
+    [nzTotal]="paging.total"
+    [nzPageSize]="paging.take"
+    (nzPageIndexChange)="onChangePaging($event)">
+  </nz-pagination>
+</div>

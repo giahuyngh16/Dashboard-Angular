@@ -1,0 +1,28 @@
+<nz-layout class="root-layout" *ngIf="currentUser">
+  <div *ngIf="isShowLoading" class="box-loading">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzWidth]="240">
+    <app-side-bar></app-side-bar>
+  </nz-sider>
+  <nz-layout>
+    <app-nav-bar></app-nav-bar>
+    <nz-content>
+      <app-breadcrumb></app-breadcrumb>
+      <div class="inner-layout-container">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+<router-outlet *ngIf="!currentUser"></router-outlet>

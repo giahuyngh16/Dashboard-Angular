@@ -1,0 +1,26 @@
+@import 'variables';
+
+.filter {
+  padding: 20px;
+}
+
+.user-status {
+  color: white;
+  font-size: 10px;
+  border-radius: 4px;
+  padding: 3px 18px;
+  min-width: 56px;
+  text-align: center;
+
+  &.active {
+    background-color: $color-main;
+  }
+
+  &.inactive {
+    background-color: $color-danger;
+  }
+}
+
+.center {
+  text-align: center;
+}

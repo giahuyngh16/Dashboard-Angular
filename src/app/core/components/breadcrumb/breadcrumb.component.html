@@ -1,0 +1,16 @@
+<nz-breadcrumb [nzSeparator]="iconTemplate">
+  <nz-breadcrumb-item class="d-inline-flex align-items-center">
+    <a class="breadcrumb-link previous" [routerLink]="[ '/' ]">Home</a>
+  </nz-breadcrumb-item>
+  <ng-container *ngFor="let item of breadcrumbResult; last as isLastItem">
+    <nz-breadcrumb-item class="d-inline-flex align-items-center"> 
+      <ng-container *ngIf="isLastItem; else elseTemplate">
+        <span class="text-capitalize breadcrumb-link current">{{ item.navMenuLabel }}</span>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <a class="text-capitalize breadcrumb-link previous" [routerLink]="[ '/' + item.url ]">{{ item.navMenuLabel }}</a>
+      </ng-template>
+    </nz-breadcrumb-item>
+  </ng-container>
+</nz-breadcrumb>
+<ng-template #iconTemplate><i class="separator-icon" nz-icon nzType="caret-right" nzTheme="outline"></i></ng-template>

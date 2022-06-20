@@ -1,0 +1,30 @@
+<nz-header>
+  <div class="d-flex justify-content-between align-items-center">
+    <i class="trigger" nz-icon [nzType]="isOpenSidebar ? 'menu-unfold' : 'menu-fold'" (click)="toggleSidebar()"></i>
+    <div class="d-flex align-self-center">
+      <div class="mr-3">
+      </div>
+      <div>
+        <nz-avatar [nzSize]="45" nzIcon="user"
+          nz-popover
+          nzPopoverPlacement="bottomRight"
+          nzPopoverTrigger="click"
+          [nzPopoverContent]="contentProfileBoxTemplate">
+        </nz-avatar>
+      </div>
+    </div>
+  </div>
+</nz-header>
+
+<ng-template #contentProfileBoxTemplate>
+  <div class="profile-box">
+    <div class="profile-info">
+      <p class="m-0 p-0 profile-name">{{ userCurrentProfile?.name }}</p>
+      <p class="m-0 p-0 profile-email">{{ userCurrentProfile?.email }}</p>
+    </div>
+    <div class="profile-modifier">
+      <button class="d-inline-block profile-modifier-button" (click)="changePassword()">Change Password</button>
+      <button class="d-inline-block profile-modifier-button ml-2" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</ng-template>

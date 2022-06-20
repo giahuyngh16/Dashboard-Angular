@@ -1,0 +1,29 @@
+<ul>
+    <ng-container *ngFor="let link of links; let index = index">
+        <li *ngIf="!link.id"class="web-link form-group" >
+            <div class="web-link__header">
+                <h6>Weblink</h6>
+                <div>
+                    <div class="web-link__icon-header" (click)="onDeleteWebLink(index)">
+                        <i nz-icon nzType="close-circle" nzTheme="outline"></i>
+                    </div>
+                </div>
+            </div>
+            <input type="text" class="w-100" [(ngModel)]="link.name" placeholder="Web Name" (ngModelChange)="$subject.next()">
+            <div class="sts-input" [class.sts-input--focused]="focused" [ngClass]="{'invalid': link.link && !isValidLink(link.link)}">
+                <div class="sts-input__icon" (click)="redirect(link.link)">
+                    <i nz-icon nzType="link" nzTheme="outline"></i>
+                </div>
+                <div class="sts-input__input">
+                    <input type="text" 
+                        [placeholder]="placeholder" 
+                        [(ngModel)]="link.link" 
+                        (ngModelChange)="$subject.next()" 
+                        (focus)="focused = true"
+                        (blur)="focused = false">
+                </div>
+            </div>
+        </li>
+    </ng-container>
+</ul>
+<a (click)="onAddWebLink()">Add Web Link</a>

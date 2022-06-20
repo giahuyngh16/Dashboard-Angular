@@ -1,0 +1,65 @@
+<div class="layout-container">
+  <section class="layout-container__header">
+    <h3 class="layout-container__title-header">Customers</h3>
+  </section>
+  <section class="filter">
+    <div nz-row nzGutter="12">
+      <div nz-col nzSpan="6">
+        <app-sts-input placeholder="Search Customer Name, Email " icon="search" [(value)]="filter.terms"
+          (valueChange)="onFilter()">
+        </app-sts-input>
+      </div>
+      <div nz-col nzSpan="6">
+        <button class="btn btn--outline btn--rounded btn--reset" type="button" nzType="primary" (click)="reset()">
+          <app-sts-icon [icon]="'refresh.svg'" [width]="12" [height]="16"></app-sts-icon>Reset
+        </button>
+      </div>
+
+    </div>
+  </section>
+  <nz-table class="table-content" [nzData]="customerList" [nzFrontPagination]="true" [nzShowPagination]="false"
+    [nzTotal]="filter.total" [nzPageSize]="filter.take" [nzPageIndex]="filter.pageIndex" #dataTable>
+    <thead>
+      <tr>
+        <ng-container *ngFor="let thead of tableHeader">
+          <ng-container *ngIf="thead.sortValue; else noSortHeaderTemplate">
+              <th class="cursor-pointer border-content" [appStsSortTable]="sortOption[thead.sortValue]"
+                  [class.text-center]="thead?.alignment == ALIGNMENT_HEADER.CENTER"
+                  [class.text-right]="thead?.alignment == ALIGNMENT_HEADER.RIGHT" [ngClass]="thead?.class"
+                  [nzWidth]="thead?.width" (sortChange)="onSortBy($event)">
+                  {{ thead.title }}
+              </th>
+          </ng-container>
+          <ng-template #noSortHeaderTemplate>
+              <th  class="cursor-pointer border-content" [class.text-center]="thead?.alignment == ALIGNMENT_HEADER.CENTER"
+                  [class.text-right]="thead?.alignment == ALIGNMENT_HEADER.RIGHT" [ngClass]="thead?.class"
+                  [nzWidth]="thead?.width">
+                  {{ thead.title }}
+              </th>
+          </ng-template>
+      </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of dataTable.data; let i = index">
+        <td class="center">
+          {{customer?.id}}
+        </td>
+        <td>
+          {{customer?.fullName}}
+        </td>
+        <td>
+          {{customer?.email}}
+        </td>
+        <td>
+          {{customer?.phoneNumber}}
+        </td>
+        <td>
+          {{customer?.address}}
+        </td>
+    </tbody>
+  </nz-table>
+  <div class="nz-footer">
+    <app-sts-pagination [paging]="filter" (pagingChange)="onChangePaging($event)"></app-sts-pagination>
+</div>
+</div>

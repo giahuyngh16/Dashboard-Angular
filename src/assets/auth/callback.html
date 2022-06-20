@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>STS CRM</title>
+</head>
+
+<body>
+  <p id="waiting">Loading...</p>
+  <div id="error"></div>
+  <script src="/assets/js/oidc-client.min.js"></script>
+  <script>
+    var Oidc = window.Oidc,
+      UserManager = Oidc.UserManager,
+      Roles = ["ProjectCoordinator", "PCTrainee", "CFO", "CCO", "BSM", "EngineeringManager", "BOD", "SalesManager", "SalesExecutive"];
+    var config = {
+      userStore: new Oidc.WebStorageStateStore({ store: window.localStorage })
+    };
+    var userManagerInstant = new UserManager(config);
+
+    if ((Oidc && Oidc.Log && Oidc.Log.logger)) {
+      Oidc.Log.logger = console;
+    }
+
+    userManagerInstant.signinRedirectCallback()
+      .then(function (user) {
+        if (!user) {
+          document.getElementById("waiting").style.display = "none";
+          document.getElementById("error").innerText = "No sign-in request pending.";
+        } else if (user.profile && (user.profile.role.indexOf("Employee") == -1)) {
+          userManagerInstant.signoutRedirect();
+          userManagerInstant.revokeAccessToken();
+        } else {
+          var isCanAccess = Roles.findIndex(role => user.profile.role.includes(role)) > -1;
+          if (isCanAccess && user.profile.active == "True") {
+            window.location = "/";
+          } else {
+            userManagerInstant.signoutRedirect();
+            userManagerInstant.revokeAccessToken();
+          }
+        }
+      })
+      .catch(function (er) {
+        document.getElementById("waiting").style.display = "none";
+        document.getElementById("error").innerText = er.message;
+      });
+  </script>
+</body>
+
+</html>

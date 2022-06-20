@@ -1,0 +1,40 @@
+<div class="m-branding d-flex align-items-center justify-content-center ">
+  <div class="logo" *ngIf="!isCollapsedSideMenu">
+      <img alt="CRM logo" [src]="'assets/img/icon-title.png'">
+  </div>
+  <div class="m-branding__toggler" (click)="toggleSidebar()">
+      <span></span>
+  </div>
+</div>
+<ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineIndent]="0" [nzInlineCollapsed]="isCollapsedSideMenu" #sidebar>
+  <ng-container *ngFor="let itemMenu of (sideBarMenu | objectKeys)">
+      <ng-container *ngIf="sideBarMenu[itemMenu].isDisplayOnMenu">
+          <ng-container
+              *ngIf="sideBarMenu[itemMenu].children && (sideBarMenu[itemMenu].children | objectKeys).length; else elseTemplate">
+              <li nz-submenu nzMatchRouter >
+                  <div class="ant-menu-item-wrapper" title>
+                      <img [src]="sideBarMenu[itemMenu].image + (sideBarMenu[itemMenu].isOpenMenu ? '-active' : '') + '.svg'" alt="">
+                      <span class="item-menu-route">{{ itemMenu }}</span>
+                  </div>
+                  <ul>
+                      <ng-container *ngFor="let subMenu of (sideBarMenu[itemMenu].children | objectKeys)">
+                          <li nz-menu-item nzMatchRouter *ngIf="sideBarMenu[itemMenu].children[subMenu].isDisplayOnMenu">
+                              <a  class="ant-sub-menu-item-wrapper" [routerLink]="[ '/' + sideBarMenu[itemMenu].children[subMenu].route ]">
+                                  <span class="item-menu-route">{{ subMenu }}</span>
+                              </a>
+                          </li>
+                      </ng-container>
+                  </ul>
+              </li>
+          </ng-container>
+          <ng-template #elseTemplate>
+              <li nz-menu-item nzMatchRouter>
+                  <a class="ant-menu-item-wrapper" [routerLink]="[ '/' + sideBarMenu[itemMenu].route ]">
+                      <img [src]="sideBarMenu[itemMenu].image + (sideBarMenu[itemMenu].isOpenMenu ? '-active' : '') + '.svg'" alt="">
+                      <a class="item-menu-route">{{ itemMenu }}</a>
+                  </a>
+              </li>
+          </ng-template>
+      </ng-container>
+  </ng-container>
+</ul>

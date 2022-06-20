@@ -1,0 +1,62 @@
+<div>
+  <form *ngIf="formGroup" [formGroup]="formGroup" nz-form>
+    <div class="details">
+      <app-sts-collapse headerText="Staff Details">
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Full Name <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="text" placeholder="Enter Full Name" formControlName="fullName">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Email <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="email" placeholder="Enter Email" formControlName="email">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Phone Number <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="text" placeholder="Enter Phone Number" formControlName="phoneNumber">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Password <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="password" placeholder="Enter Phone Number" formControlName="password">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="24">
+            <nz-form-label [nzNoColon]="true">
+              Address
+            </nz-form-label>
+            <nz-form-control>
+              <ckeditor
+                [config]="editorConfig"
+                [ngModel]="formGroup.get('address').value"
+                [ngModelOptions]="{standalone: true}"
+                (change)="onChangeDetails($event)">
+              </ckeditor>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </app-sts-collapse>
+    </div>
+  </form>
+
+</div>

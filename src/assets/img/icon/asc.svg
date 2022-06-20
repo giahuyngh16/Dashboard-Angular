@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 58 (101010) - https://sketch.com -->
+    <title>468DC3A7-B4AD-48FD-A727-EA99B4B54FC1</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M0.5,1.5 L4.5,1.5 L4.5,3 L0.5,3 L0.5,1.5 Z M0.5,8.5 L0.5,7 L9.5,7 L9.5,8.5 L0.5,8.5 Z M0.5,4.25 L6.5,4.25 L6.5,5.75 L0.5,5.75 L0.5,4.25 Z" id="path-1"></path>
+    </defs>
+    <g id="Asset-Artboard-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="🌐-Icon">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="ic_action_sort_general_asc" fill-rule="nonzero"></g>
+            <g id="Color" mask="url(#mask-2)" fill="#151b22">
+                <rect id="■-Color" x="0" y="0" width="10" height="10"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

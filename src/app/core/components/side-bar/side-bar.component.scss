@@ -1,0 +1,108 @@
+@import 'variables';
+
+.logo {
+  overflow-x: hidden;
+  height: 60px;
+  width: 100%;
+  padding: 5px 17px;
+  img {
+    height: 100%;
+  }
+}
+
+::ng-deep {
+  .ant-menu.ant-menu-root.ant-menu-dark {
+    padding: 0 10px;
+    background: #151B22;
+    transition: all 0.01s;
+
+    .ant-menu-item .ant-menu-item-wrapper .item-menu-route {
+      color: $color-secondary;
+      font-size: $font-size;
+      margin-left: 10px;
+    }
+
+    .ant-menu-item:hover .ant-menu-item-wrapper .item-menu-route {
+      color: #ffffff;
+    }
+
+    .ant-menu-item.ant-menu-item-selected{
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 4px;
+
+      .item-menu-route {
+        font-size: $font-size;
+        color: $accent-color
+      }
+    }
+
+    .ant-menu-submenu .ant-menu-submenu-title {
+      color: $color-secondary;
+      font-size: $font-size;
+
+      .ant-menu-item-wrapper {
+        padding: 0 16px;
+      }
+
+      .ant-menu-item-wrapper .item-menu-route {
+        margin-left: 10px;
+      }
+    }
+
+    .ant-menu-submenu .ant-menu.ant-menu-sub .ant-menu-item a {
+      margin-left: 20px;
+    }
+
+    .ant-menu.ant-menu-sub .ant-menu-item {
+      color: $color-secondary;
+      font-size: $font-size;
+    }
+
+    .ant-menu-submenu {
+      ul {
+        background: #151B22;
+        box-shadow: unset;
+      }
+    }
+
+    .ant-menu-submenu.ant-menu-submenu-selected {
+
+      .ant-menu-submenu-title {
+        background-color: rgba(255,255,255,0.2);
+        color: $accent-color;
+        border-radius: 4px;
+      }
+
+      .ant-menu.ant-menu-sub {
+
+        .ant-menu-item.ant-menu-item-selected {
+          border-radius: 4px;
+          background-color: unset;
+
+          a {
+            color: $accent-color;
+          }
+        }
+
+        .ant-menu-item:hover a {
+          color: #ffffff;
+        }
+      }
+    }
+
+  }
+
+  .ant-layout-sider-collapsed {
+    .item-menu-route {
+      display: none;
+    }
+
+    .ant-menu-dark.ant-menu-vertical .ant-menu-item .ant-menu-item-wrapper {
+      margin-left: -10px;
+    }
+
+    .ant-menu-submenu .ant-menu-submenu-title .ant-menu-item-wrapper {
+      margin-left: -25px;
+    }
+  }
+}

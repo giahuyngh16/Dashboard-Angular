@@ -1,0 +1,342 @@
+@import './variables.scss';
+
+.ant-calendar-picker {
+  width: 100%;
+}
+
+.ant-calendar-picker-input {
+  min-height: 40px;
+  border-radius: 5px;
+}
+
+.ant-input  {
+  font-size: $font-size;
+}
+
+.ant-calendar-picker:focus .ant-calendar-picker-input:not(.ant-input-disabled),
+.ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled),
+.ant-input:focus,
+.ant-input:hover {
+  border-color: $accent-color;
+  box-shadow: none;
+}
+
+.ant-calendar-selected-day .ant-calendar-date,
+.ant-calendar-date:hover {
+  background-color: $accent-color;
+  color: white !important;
+  border-color: $accent-color;
+}
+
+.ant-calendar-today .ant-calendar-date {
+  border-color: $accent-color;
+  color: $accent-color;
+}
+.ant-calendar-disabled-cell.ant-calendar-today .ant-calendar-date::before {
+  border: unset;
+}
+
+.ant-calendar-year-panel-selected-cell .ant-calendar-year-panel-year,
+.ant-calendar-year-panel-selected-cell .ant-calendar-year-panel-year:hover,
+.ant-calendar-decade-panel-selected-cell .ant-calendar-decade-panel-decade,
+.ant-calendar-decade-panel-selected-cell .ant-calendar-decade-panel-decade:hover {
+  background: $accent-color;
+}
+
+.anticon-calendar {
+  font-size: 12px;
+}
+
+.ant-modal-confirm-btns .ant-btn-primary {
+  background-color: $accent-color;
+  border-color: $accent-color;
+}
+
+.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td,
+.ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td,
+.ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td,
+.ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td {
+  background: #f7f7f7;
+}
+
+.ant-table {
+
+  .ant-table-thead > tr > th {
+    vertical-align: middle;
+    padding: 10px;
+  }
+
+  .ant-table-tbody > tr > td {
+    vertical-align: top;
+    padding: 10px;
+  }
+
+  .ant-table-column-title,
+  td {
+    font-size: $font-size;
+    color: $primary-color;
+  }
+
+  .available-sort .ant-table-header-column {
+    margin-right: 5px;
+  }
+}
+
+.ant-dropdown-menu-item:hover,
+ant-dropdown-menu-submenu-title:hover {
+  background-color: $border-color;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: $accent-color;
+  border-color: $accent-color;
+}
+
+.ant-pagination-item,
+.ant-pagination-item-link {
+  border: none !important;
+  border-radius: 4px;
+  min-width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ant-pagination-item:focus a,
+.ant-pagination-item:hover a {
+  color: $accent-color;
+}
+
+.ant-pagination-item-active {
+  background-color: $accent-color;
+
+  a {
+    color: white;
+  }
+}
+
+.ant-card {
+  font-size: $font-size;
+}
+
+.ant-card-custom-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  > span {
+    margin-left: 10px;
+  }
+
+  .title {
+    font-weight: 500;
+    color: $primary-color;
+    font-size: $font-size;
+  }
+
+  .description {
+    font-size: $small-font-size;
+    color: $primary-light-color;
+  }
+}
+
+.ant-tabs, .ant-tabs-nav-container {
+  font-size: $font-size;
+}
+
+.ant-tabs-nav {
+  .ant-tabs-tab {
+    padding: 12px 20px;
+  }
+
+  .ant-tabs-tab-active {
+    color: $primary-color;
+  }
+}
+
+.ant-tabs-nav .ant-tabs-tab:hover {
+  color: $primary-color;
+}
+
+.ant-tabs-custom-content {
+  padding: 0 20px 20px;
+}
+
+.ant-tabs-ink-bar {
+  background-color: $accent-color;
+}
+
+.ant-modal-body {
+  padding: 0;
+}
+
+.ant-form-item {
+  color: $primary-color;
+  font-size: $font-size;
+
+  .ant-form-item-label {
+    text-align: left;
+    white-space: normal;
+    line-height: 18px;
+    margin-bottom: 5px;
+
+    label {
+      color: $primary-color;
+      font-weight: 500;
+      font-size: $font-size;
+    }
+
+  }
+
+  .nz-form-text {
+    line-height: 18px;
+  }
+}
+
+.ant-form label {
+  font-size: $font-size;
+}  
+
+.ant-form-item-control-wrapper {
+
+  input,
+  textarea {
+    width: 100%;
+  }
+}
+
+.ant-form-item-control .ant-form-explain {
+  font-size: 10px;
+  margin-top: 5px;
+  line-height: 12px;
+}
+
+.ant-collapse {
+  font-size: $font-size;
+  color: $primary-color;
+}
+
+.ant-card-type-inner .ant-card-head {
+  min-height: unset;
+}
+
+.ant-card-type-inner .ant-card-head .ant-card-head-title {
+  font-size: $big-font-size;
+  padding: 9px 0;
+  color: $primary-color;
+  font-weight: 500;
+}
+
+.ant-radio-wrapper {
+  color: $primary-color;
+  font-size: $font-size;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 10px 20px;
+  color: $primary-color;
+  font-size: $big-font-size;
+  font-weight: 500;
+}
+
+.ant-collapse-content {
+  overflow: unset;
+}
+
+
+.ant-notification-notice {
+  color: white;
+
+  i {
+    color: white !important;
+  }
+
+  .ant-notification-notice-icon {
+    display: none;
+  }
+
+  .ant-notification-notice-message {
+    margin-left: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  .ant-notification-notice-description {
+    margin-left: 0;
+    font-size: 13px;
+    color: #ffffff;
+  }
+
+  &.error {
+    background-color: $color-danger !important;
+  }
+
+  &.success {
+    background-color: $accent-color !important;
+  }
+}
+
+
+.ant-form-item-control.has-error .ng-invalid {
+  border-color: $color-danger;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  border-color: $color-main;
+  left: 23%;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: white;
+}
+
+.ant-progress-bg {
+  background-color: $color-main;
+}
+
+.ant-modal-confirm {
+  .ant-modal-body  {
+    padding: 0;
+  }
+
+  .anticon.anticon-question-circle {
+    display: none;
+  }
+
+  .ant-modal-confirm-title {
+    padding: 10px 20px;
+    background-color: #7BBD1E;
+    color: #ffffff;
+    font-size: 20px;
+  }
+
+  .ant-modal-confirm-content {
+    margin: 0;
+    padding: 20px;
+  }
+
+  .ant-modal-confirm-body > .anticon + .ant-modal-confirm-title + .ant-modal-confirm-content {
+    margin-left: 0;
+  }
+
+  .ant-modal-confirm-btns {
+    padding: 0 20px 20px;
+    margin-top: 0;
+  }
+
+}
+
+.ant-modal-title {
+   color: $primary-color;
+   font-size: $big-font-size;
+}
+
+.ant-radio-group {
+  color: $primary-color;
+  font-size: $font-size;
+}
+
+.ant-checkbox-wrapper {
+  color: $primary-color;
+}

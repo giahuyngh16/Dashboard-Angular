@@ -1,0 +1,337 @@
+@import 'variables';
+@import 'mixins';
+
+$width-arrow: 40px;
+$width-total-selected: 16px;
+$width-icon: 40px;
+
+.drop-checkbox-container {
+  position: relative;
+}
+
+.search-box {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 5px;
+  border: solid 1px $border-color;
+
+  .check-list-icon,
+  .holder-text,
+  .total-selected,
+  .toggle-icon {
+    height: 100%;
+    background-color: #ffffff;
+    color: #868e96;
+  }
+
+  app-sts-icon {
+    filter: invert(58%) sepia(11%) saturate(281%) hue-rotate(169deg) brightness(94%) contrast(89%);
+  }
+
+  .check-list-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    min-width: 40px;
+    height: 100%;
+    background-color: #ebedf2;
+
+    i {
+      font-size: 16px;
+    }
+  }
+  .holder-text {
+    flex-grow: 1;
+    border: none;
+    padding: 5px 0 5px 10px;
+    outline: 0;
+    border-radius: 0;
+    font-size: $font-size;
+    color: $primary-color;
+
+    &.placeholder {
+      color: $primary-light-color;
+    }
+  }
+  .holder-text.open {
+    margin: 0;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .total-selected {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+  }
+  .toggle-icon {
+    min-width: 40px;
+    width: 40px;
+
+    &::after {
+      transition: transform linear 300ms;
+      content: "";
+      position: absolute;
+      top: 15px;
+      right: 16px;
+      width: 9px;
+      height: 9px;
+      border: solid #A9A9A9;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+    &.open {
+      &::after {
+        top: 19px;
+        transform: rotate(225deg);
+      }
+    }
+  }
+  &.valuable {
+    .check-list-icon {
+      background-color: $color-main;
+      color: #ffffff;
+    }
+
+    app-sts-icon {
+      @include filter-white;
+    }
+  }
+  &.focus {
+    border-color: $color-main;
+  }
+}
+
+.box-content {
+  position: absolute;
+  z-index: 15;
+  margin: 3px 0 0;
+  border-radius: 5px;
+  padding-bottom: 0.5rem;
+  background-color: #ffffff;
+  box-shadow: 1px 4px 15px 1px rgba(113, 106, 202, 0.3);
+  width: 100%;
+  min-width: 200px;
+  overflow: hidden;
+  animation: fade-in-from-bottom 0.3s ease 1;
+}
+.selected-result-tag {
+  display: flex;
+  align-items: center;
+  transition: height linear 300ms;
+  ul {
+    flex-grow: 1;
+    margin: 5px 0 5px 5px;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      padding: 5px;
+      margin: 2px;
+      background-color: #e5e5e5;
+      border-radius: 5px;
+      display: inline-block;
+      font-size: 14px;
+      color: #888888;
+      .remove {
+        cursor: pointer;
+        font-size: 13px;
+        margin-left: 3px;
+        color: #b0adad;
+        &:hover {
+          color: #000000;
+        }
+      }
+    }
+  }
+  .select-all {
+    cursor: pointer;
+    width: max-content;
+    min-width: max-content;
+    padding-left: 7px;
+    padding-right: 5px;
+    margin: 5px 0;
+    color: #888888;
+    &:hover {
+      text-decoration: underline;
+      color: $color-main;
+    }
+  }
+  .clear {
+    cursor: pointer;
+    width: max-content;
+    min-width: max-content;
+    padding-left: 7px;
+    padding-right: 5px;
+    margin: 5px 0;
+    color: #888888;
+    &:hover {
+      text-decoration: underline;
+      color: $color-main;
+    }
+  }
+}
+.selected-result-tag {
+  height: auto;
+  &.not-display-tag {
+    height: 30px;
+  }
+  &.not-display-tag.not-result-selected {
+    height: 0;
+  }
+  &.not-result-selected {
+    height: 0;
+  }
+}
+input.search-input-text {
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #ebedf2;
+  border-top: 1px solid #ebedf2;
+  padding: 10px 10px;
+  margin-bottom: 5px;
+  outline: 0;
+  width: 100%;
+  border-radius: 0;
+}
+ul.data-result {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  overflow-y: auto;
+}
+li.result-item {
+  font-size: $font-size;
+  line-height: 20px;
+  list-style: none;
+  padding: 5px 9px;
+  cursor: pointer;
+  label {
+    pointer-events: none;
+    position: relative;
+    word-break: break-word;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  input[type="checkbox"] {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    z-index: 10000;
+    top: 3px;
+    left: 3px;
+  }
+  span.check-tick {
+    cursor: pointer;
+    border: 1px solid $color-main !important;
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    margin-right: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    &::after {
+      border: solid $color-main;
+      content: "";
+      position: absolute;
+      display: none;
+      top: 50%;
+      left: 50%;
+      margin-left: -2px;
+      margin-top: -6px;
+      width: 5px;
+      height: 10px;
+      border-width: 0 2px 2px 0 !important;
+      transform: rotate(45deg);
+    }
+  }
+  input[type="checkbox"]:checked ~ span.check-tick:after {
+    display: block;
+  }
+  &:hover {
+    color: $color-main;
+  }
+}
+li.result-item.selected {
+  background-color: #ebedf2;
+  width: calc(100% - 1px);
+  &:hover {
+    background-color: #f9f9f9;
+  }
+}
+li.result-item.not-selected {
+  &:hover {
+    background-color: #ebedf2;
+    width: calc(100% - 1px);
+  }
+}
+li.result-item.no-result {
+  cursor: default;
+}
+li.result-item.add-new-value {
+  cursor: default;
+  button {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: $color-main;
+    color: #ffffff;
+    border: none;
+    margin-right: 5px;
+    padding: 5px 8px;
+    &:hover {
+      box-shadow: 1px 4px 15px 1px rgba(113, 106, 202, 0.3);
+    }
+  }
+  span.new-value {
+    display: inline-block;
+    word-break: break-word;
+  }
+}
+
+.show-selected-result {
+  line-height: 10px;
+  max-height: 65px;
+  overflow: auto;
+  > p {
+    display: inline-block;
+    line-height: 20px;
+  }
+}
+
+@keyframes fade-in-from-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::ng-deep {
+  .has-error .search-box {
+    border-color: $color-danger;
+  }
+}
+
+input.holder-text {
+  max-width: calc(100% - #{$width-arrow + $width-total-selected});
+
+  &.has-icon {
+    max-width: calc(100% - #{$width-arrow + $width-total-selected + $width-icon});
+  }
+}
+
+  

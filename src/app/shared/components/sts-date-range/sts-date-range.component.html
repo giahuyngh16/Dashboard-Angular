@@ -1,0 +1,44 @@
+<div class="date-range" [class.active]="isShow">
+    <div class="control" 
+        [ngClass]="{'active' : selectedType && selectedType.id !== DATE_RANGE_TYPE.NONE}"
+        (click)="onClickControl()">
+
+        <div class="icon">
+            <app-sts-icon icon="note.svg" [width]="16" [height]="16"></app-sts-icon>
+        </div>
+        <div class="input">
+            <ng-container *ngIf="selectedType?.id === DATE_RANGE_TYPE.NONE; else elseTemplate">
+                {{placeholder}}
+            </ng-container>
+            <ng-template #elseTemplate>
+                <span class="select-date">{{selectedType.startDate | date: DATE_FORMAT.ddMMMyyyy}}
+                    <ng-container *ngIf="selectedType.endDate"> - {{selectedType.endDate | date: DATE_FORMAT.ddMMMyyyy}}
+                    </ng-container>
+                </span>
+            </ng-template>
+        </div>
+        <div class="toggle-icon" [class.open]="isShow"></div>
+    </div>
+    <div *ngIf="isShow || isShowDateRangePicker">
+        <div class="content" *ngIf="isShow">
+            <ul>
+                <li *ngFor="let item of DATE_RANGE" (click)="onSelectItem(item)"
+                    [ngClass]="{'active': item.id == selectedType.id}">
+                    <div class="list-item">
+                        {{item.name}}
+                        <div *ngIf="item.id == selectedType.id">
+                            <i nz-icon nzType="check" nzTheme="outline"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="isShowDateRangePicker" class="sts-date-range-picker"
+            [ngStyle]="{'right': alignment === 'left' ? 'auto' : '0','left': alignment === 'left' ? 0 : 'auto'}">
+            <nz-range-picker 
+                [nzOpen]="isShowDateRangePicker" 
+                (nzOnCalendarChange)="onChangeDateRangePicker($event)">
+            </nz-range-picker>
+        </div>
+    </div>
+</div>

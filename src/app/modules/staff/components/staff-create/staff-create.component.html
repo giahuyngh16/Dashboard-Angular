@@ -1,0 +1,26 @@
+<div class="layout-container">
+  <section class="layout-container__header">
+      <h3 class="layout-container__title-header">
+          <i (click)="back()" nz-icon nzType="arrow-left" nzTheme="outline" class="btn--back"></i>
+          Create New Staff
+      </h3>
+  </section>
+  <form *ngIf="formGroup" [formGroup]="formGroup" nz-form>
+      <app-staff-form formControlName="staff" [isSubmited]="isSubmited"></app-staff-form>
+  </form>
+  <section class="layout-container__footer">
+      <button
+          class="btn btn--primary btn--rounded mr-3"
+          (click)="onSave()"
+      >
+          Save
+      </button>
+      <button
+        class="btn btn--primary btn--rounded mr-3"
+        (click)="onSave(true)"
+      >
+        Save & Close
+      </button>
+      <button class="btn btn--outline btn--rounded" type="button" nzType="primary" (click)="onCancel()">Close</button>
+  </section>
+</div>

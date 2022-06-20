@@ -1,0 +1,70 @@
+.btn {
+    min-height: 40px;
+    min-width: 120px;
+    padding: 10px 12px;
+    font-size: $font-size;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid;
+
+    > i {
+        margin-right: 15px;
+        font-size: 20px;
+    }
+}
+
+.btn--primary {
+    background-color: $color-main;
+    border-color: $color-main;
+    color: white;
+
+    &:hover {
+        background-color: $color-main-dark;
+        color: white;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+
+        &:hover {
+            background-color: $color-main; 
+        }
+    }
+}
+
+.btn--secondary {
+    background-color: $red;
+    border-color: $red;
+    color: white;
+
+    &:hover {
+        background-color: $red-dark;
+        color: white;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+}
+
+
+.btn--outline {
+    background-color: transparent;
+    border-color: $color-border;
+
+    &:hover {
+        color: $color-main;;
+        border-color: $color-main;
+    }
+}
+
+.btn--rounded {
+    border-radius: 4px;
+}
+
+.ant-btn-sm {
+    font-size: 12px;
+}

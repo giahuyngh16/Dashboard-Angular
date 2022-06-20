@@ -1,0 +1,93 @@
+<div class="drop-checkbox-container" appStsClickOutside (onClickOutside)="clickOutside($event)">
+  <div class="search-box"
+      (click)="onToggle()"
+      [class.valuable]="selectedResult?.length"
+      [class.focus]="isShow"
+    >
+    <div *ngIf="config.nzIcon" class="check-list-icon">
+      <i nz-icon [nzType]="config.nzIcon.type" [nzTheme]="config.nzIcon.theme"></i>
+    </div>
+    <div *ngIf="config.importedIcon" class="check-list-icon">
+      <app-sts-icon [width]="16" [height]="16" [icon]="config.importedIcon"></app-sts-icon>
+    </div>
+    <input *ngIf="!isShow" [ngClass]="{'has-icon': config.importedIcon || config.nzIcon}" class="holder-text" [class.placeholder]="usePlaceholder()" type="text" readonly
+      [value]="displayValue()"
+      (focus)="onDropBoxFocus($event)" />
+    <p *ngIf="isShow" class="holder-text open">
+      {{ displayValue() }}
+    </p>
+    <div class="total-selected" *ngIf="config.isMultiple">
+      {{ selectedResult?.length ? '(' + selectedResult.length + ')' : '' }}
+    </div>
+    <div class="toggle-icon" [ngClass]="{'open': isShow}">
+    </div>
+  </div>
+  <div class="box-content" *ngIf="isShow">
+    <div class="selected-result-tag"
+      [ngClass]="{
+        'not-display-tag': !config.isDisplaySelectedTag
+      }"
+      >
+      <ul *ngIf="config.isDisplaySelectedTag">
+        <ng-container *ngFor="let item of selectedResult; trackBy: trackSelectedResult">
+          <li>
+            {{ item[config.displayField] }}
+            <span class="remove" role="button" title="Remove item" (click)="onRemoveSelectedItem($event, item)">
+              <i nz-icon nzType="close-circle" nzTheme="outline"></i>
+            </span>
+          </li>
+        </ng-container>
+      </ul>
+      <div class="select-all" role="button" type="button" *ngIf="!disabled && config.isMultiple" (click)="selectAll()">
+        Select all
+      </div>
+      <div class="clear" role="button"
+        *ngIf="!disabled && selectedResult?.length > 0"
+        (click)="$event.stopPropagation(); clearAll()"
+      >
+        Clear all
+      </div>
+    </div>
+    <input type="text" class="search-input-text" *ngIf="config.isSearchMode"
+      #searchBox
+      [placeholder]="config.placeHolderSearchBox"
+      [ngModel]="searchTerm"
+      (input)="searchTerm$.next($event.target.value)"
+    />
+    <ul class="data-result">
+      <ng-container *ngFor="let item of dataFiltered; trackBy: trackFilteredData">
+        <li class="result-item" (click)="onSelectItem($event, item)"
+          [ngClass]="{
+            'selected': item.isSelected,
+            'not-selected': !item.isSelected
+          }"
+          >
+          <label>
+            <input type="checkbox" [checked]="item.isSelected" />
+            <span class="check-tick"></span>
+            {{ item[config.displayField] }}
+          </label>
+        </li>
+      </ng-container>
+      <li class="result-item no-result" *ngIf="!dataFiltered?.length">
+        No result
+      </li>
+      <li class="result-item add-new-value" *ngIf="config.isAddNewWhenNotExist && !dataFiltered?.length">
+        <button type="button" (click)="onAddNewValue()">
+          Add
+        </button>
+        <span class="new-value">
+          {{ newValue }}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="show-selected-result" *ngIf="config.isDisplaySelectedResult">
+    <p class="p-0 m-0" *ngFor="let selectedItem of selectedResult; last as isLastSelectedItem; trackBy: trackSelectedResult">
+      <small>
+        {{ selectedItem[config.displayField] }}
+      </small>
+      <span *ngIf="!isLastSelectedItem">,&nbsp;</span>
+    </p>
+  </div>
+</div>

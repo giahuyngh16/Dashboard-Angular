@@ -1,0 +1,51 @@
+@import 'variables';
+::ng-deep {
+    .sts-input {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 5px;
+        border: solid 1px #cecece;
+        transition: $transition-all;
+
+        &--focused {
+            border-color: $color-main;
+        }
+
+        &--focused &__icon {
+            background-color: $color-main;
+            color: white;
+        }
+
+        &__icon {
+            display: grid;
+            place-items: center;
+            width: 40px;
+            min-width: 40px;
+            height: 100%;
+            background-color: #ebedf2;
+            color: #868e96;
+            font-size: 16px;
+        }
+
+        app-sts-icon {
+            filter: invert(58%) sepia(11%) saturate(281%) hue-rotate(169deg) brightness(94%) contrast(89%);
+        }
+
+        &--focused app-sts-icon {
+            filter: unset
+        }
+
+        &__input {
+            flex: 1;
+
+            > input {
+                border: none;
+                outline: none;
+                width: 100%;
+                font-size: $font-size;
+            }
+        }
+    }
+}

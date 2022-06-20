@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 61.2 (101010) - https://sketch.com -->
+    <title>18E785CA-E929-4C45-BA69-91A179D8F36A@1.5x</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <polygon id="path-1" points="16 7.01754386 16 8.98245614 3.84750733 8.98245614 9.43108504 14.5964912 8.02346041 16 0 8 8.02346041 0 9.43108504 1.40350877 3.84750733 7.01754386"></polygon>
+    </defs>
+    <g id="Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-622.000000, -416.000000)">
+            <g id="Icons-/-Action-/-Load-/-Cloud-/-Down-/-Outline-Copy-21" transform="translate(622.000000, 416.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="ic_arr_left" fill-rule="nonzero"></g>
+                <g id="Color" mask="url(#mask-2)" fill="#151B22">
+                    <g transform="translate(-2.000000, -2.000000)" id="🎨-Color">
+                        <rect x="0" y="0" width="20" height="20"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

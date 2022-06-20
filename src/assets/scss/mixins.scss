@@ -1,0 +1,29 @@
+@mixin text-ellipsis {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin filter-grey {
+  filter: invert(58%) sepia(11%) saturate(281%) hue-rotate(169deg) brightness(94%) contrast(89%);
+}
+
+@mixin filter-green {
+  filter: invert(71%) sepia(14%) saturate(2402%) hue-rotate(40deg) brightness(92%) contrast(85%);
+}
+
+@mixin filter-white {
+  filter: invert(97%) sepia(1%) saturate(1236%) hue-rotate(197deg) brightness(119%) contrast(100%);
+}

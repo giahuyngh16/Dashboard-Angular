@@ -1,0 +1,42 @@
+@import 'variables';
+
+.attachment-item {
+    width: 100%;
+    display: inline-flex;
+    margin: 5px;
+    font-size: $font-size;
+    color: $color-dark;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border: solid 1px $color-border;
+    border-radius: 3px;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+        width: 15px;
+        height: 18px;
+    }
+
+    .la {
+        padding: 0 5px;
+        cursor: pointer;
+    }
+
+    a {
+        color: $color-dark;
+        text-decoration: none;
+        padding-left: 10px;
+        line-height: 23px;
+        max-width: calc(100% - 20px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+}
+
+:host {
+    width: 100%;
+    display: block;
+}
