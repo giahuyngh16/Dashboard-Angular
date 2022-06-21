@@ -1,0 +1,30 @@
+@import "variables";
+
+form {
+  display: flex;
+  padding: 10px;
+}
+
+.details {
+  width: 70%;
+  margin: 10px;
+}
+
+.attachments {
+  width: 30%;
+  margin: 10px;
+}
+
+.error-message {
+  color: $color-danger !important;
+}
+
+.assignee {
+  max-width: 360px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.img-product {
+  height: 300px;
+}

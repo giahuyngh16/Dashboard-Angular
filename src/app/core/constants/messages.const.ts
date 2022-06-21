@@ -15,6 +15,16 @@ const APP_MESSAGE = {
         UPDATED_SUCCESS: 'Updated information staff successfully',
         DELETED_SUCCESS: 'Deleted staff successfully',
     },
+    PRODUCT_DETAIL: {
+        CREATE_SUCCESS: 'Created product detail successfully',
+        UPDATED_SUCCESS: 'Updated product detail successfully',
+        DELETED_SUCCESS: 'Deleted product detail successfully',
+    },
+    PRODUCT_SIZE: {
+        CREATE_SUCCESS: 'Created product size successfully',
+        UPDATED_SUCCESS: 'Updated product size successfully',
+        DELETED_SUCCESS: 'Deleted product size successfully',
+    },
 };
 
 export { APP_MESSAGE };

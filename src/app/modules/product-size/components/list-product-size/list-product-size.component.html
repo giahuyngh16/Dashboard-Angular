@@ -1,17 +1,17 @@
 <div class="layout-container">
   <section class="layout-container__header">
-    <h3 class="layout-container__title-header">Staffs</h3>
+    <h3 class="layout-container__title-header">Product Sizes</h3>
     <div class="d-flex align-items-center">
-      <button class="btn btn--primary btn--rounded ml-3" (click)="createStaff()">
+      <button class="btn btn--primary btn--rounded ml-3" (click)="createProductSize()">
           <i nz-icon nzType="plus-square" nzTheme="fill"></i>
-          Create Staff
+          Create Product Size
       </button>
   </div>
   </section>
   <section class="filter">
     <div nz-row nzGutter="12">
       <div nz-col nzSpan="6">
-        <app-sts-input placeholder="Search Staff Name, Email " icon="search" [(value)]="filter.terms"
+        <app-sts-input placeholder="Search ProductSize Name, Email " icon="search" [(value)]="filter.terms"
           (valueChange)="onFilter()">
         </app-sts-input>
       </div>
@@ -23,7 +23,7 @@
 
     </div>
   </section>
-  <nz-table class="table-content" [nzData]="staffList" [nzFrontPagination]="true" [nzShowPagination]="false"
+  <nz-table class="table-content" [nzData]="productSizeList" [nzFrontPagination]="true" [nzShowPagination]="false"
     [nzTotal]="filter.total" [nzPageSize]="filter.take" [nzPageIndex]="filter.pageIndex" #dataTable>
     <thead>
       <tr>
@@ -47,24 +47,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let staff of dataTable.data; let i = index">
+      <tr *ngFor="let productSize of dataTable.data; let i = index">
         <td class="center">
-          {{staff?.id}}
+          {{productSize?.id}}
         </td>
         <td>
-          {{staff?.fullName}}
+          {{productSize?.name}}
         </td>
         <td>
-          {{staff?.email}}
+          {{productSize?.size}}
         </td>
         <td>
-          {{staff?.phoneNumber}}
+          {{productSize?.quantity}}
         </td>
         <td>
-          {{staff?.address}}
-        </td>
-        <td>
-          <a  class="ant-sub-menu-item-wrapper" [routerLink]="[ '/' + ROUTING_PATH.STAFF.UPDATE_STAFF + '/' + staff.id ]">
+          <a  class="ant-sub-menu-item-wrapper" [routerLink]="[ '/' + ROUTING_PATH.PRODUCT_SIZE.UPDATE + '/' + productSize.id ]">
             <span class="item-menu-route">Update</span>
         </a>
         </td>

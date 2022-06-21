@@ -15,7 +15,20 @@ const SIDE_BARS: ISidebarMenu = {
     route: appRoutingsConfig.staff.path,
     isOpenMenu: false,
     roles: 'Manager',
-  }
-};
+  },
+  'Product Detail': {
+    image: 'assets/img/menu/inquiry',
+    icon: 'fa fa-link',
+    route: appRoutingsConfig.productDetail.path,
+    isOpenMenu: false,
+    roles: 'Manager',
+  },
+  'Product Size': {
+    image: 'assets/img/menu/inquiry',
+    icon: 'fa fa-link',
+    route: appRoutingsConfig.productSize.path,
+    isOpenMenu: false,
+    roles: 'Manager',
+  }};
 
 export { SIDE_BARS };

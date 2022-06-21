@@ -6,24 +6,24 @@ import { APP_MESSAGE } from '@app-core/constants/messages.const';
 import { IRequestError } from '@app-core/interfaces/request-error.interface';
 import { ROUTING_PATH } from '@app-core/routings';
 import { AuthService } from '@app-core/services/auth.service';
-import { IStaffForm } from '@app-modules/staff/interfaces/staff.interface';
-import { StaffService } from '@app-modules/staff/services/staff.service';
+import { IProductSize } from '@app-modules/product-size/interfaces/product-size.interface';
+import { ProductSizeService } from '@app-modules/product-size/services/product-size.service';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { map, switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-staff-update',
-  templateUrl: './staff-update.component.html',
-  styleUrls: ['./staff-update.component.scss']
+  selector: 'app-product-size-update',
+  templateUrl: './product-size-update.component.html',
+  styleUrls: ['./product-size-update.component.scss']
 })
-export class StaffUpdateComponent implements OnInit {
+export class ProductSizeUpdateComponent implements OnInit {
   formGroup: FormGroup;
   isSubmited = false;
 
   constructor(
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
-    private _staffService: StaffService,
+    private _productSizeService: ProductSizeService,
     private _nzNotificationService: NzNotificationService,
     private _nzModalService: NzModalService,
     private _authService: AuthService
@@ -31,14 +31,13 @@ export class StaffUpdateComponent implements OnInit {
 
   ngOnInit() {
     this._activatedRoute.params.subscribe((param) => {
-      this._staffService.getStaff(param.id).subscribe((staff) => {
+      this._productSizeService.getProductSize(param.id).subscribe((productSize) => {
         this.formGroup = new FormGroup({
-          id: new FormControl(staff.id),
-          fullName: new FormControl(staff.fullName, Validators.required),
-          email: new FormControl(staff.email, Validators.required),
-          password: new FormControl(null),
-          phoneNumber: new FormControl(staff.phoneNumber, Validators.required),
-          address: new FormControl(staff.address),
+          id: new FormControl(productSize.id),
+          name: new FormControl(productSize.name, Validators.required),
+          quantity: new FormControl(productSize.quantity, Validators.required),
+          size: new FormControl(productSize.size, Validators.required),
+          idProductDetail: new FormControl(productSize.idProductDetail, Validators.required),
         });
       })
     });
@@ -49,22 +48,22 @@ export class StaffUpdateComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    const staff = this.formGroup.value;
-    this._staffService
-      .updateStaff(staff as IStaffForm)
+    const productSize = this.formGroup.value;
+    this._productSizeService
+      .updateProductSize(productSize as IProductSize)
       .subscribe(
         () => {
           this._nzNotificationService.success(
             APP_MESSAGE.NOTIFICATION.TITLE.SUCCESS,
-            APP_MESSAGE.STAFF.UPDATED_SUCCESS,
+            APP_MESSAGE.PRODUCT_SIZE.UPDATED_SUCCESS,
             APP_CONFIG.CONFIG_SUCCESS_NOTIFICATION
           );
           if (isClose) {
-            this._router.navigate([ROUTING_PATH.STAFF.ROOT]);
+            this._router.navigate([ROUTING_PATH.PRODUCT_SIZE.ROOT]);
           } else {
             this._router.navigate([
-              ROUTING_PATH.STAFF.UPDATE_STAFF,
-              staff.id,
+              ROUTING_PATH.PRODUCT_SIZE.UPDATE,
+              productSize.id,
             ]);
           }
         },
@@ -80,7 +79,7 @@ export class StaffUpdateComponent implements OnInit {
   }
 
   back(): void {
-    this._router.navigate(['./staff']);
+    this._router.navigate(['./product-size']);
   }
 
   onCancel() {
@@ -89,7 +88,7 @@ export class StaffUpdateComponent implements OnInit {
         nzTitle: 'Confirm',
         nzContent: APP_MESSAGE.CONFIRM_MESSAGE,
         nzOnOk: () => {
-          this._router.navigate([ROUTING_PATH.STAFF.ROOT]);
+          this._router.navigate([ROUTING_PATH.PRODUCT_SIZE.ROOT]);
         },
       });
     } else {

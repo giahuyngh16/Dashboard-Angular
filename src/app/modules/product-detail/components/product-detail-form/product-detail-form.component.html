@@ -1,0 +1,91 @@
+<div>
+  <form *ngIf="formGroup" [formGroup]="formGroup" nz-form>
+    <div class="details">
+      <app-sts-collapse headerText="Product Details">
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Name <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="text" placeholder="Enter product name" formControlName="name">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Status <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="text" placeholder="Enter product status" formControlName="status">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Type <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="text" placeholder="Enter product type" formControlName="type">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Price (VND)<span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="number" min="100000" max="100000000" step="100000" placeholder="Enter price"
+                formControlName="price">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Description
+            </nz-form-label>
+            <nz-form-control>
+              <ckeditor [config]="editorConfig" [ngModel]="formGroup.get('description').value"
+                [ngModelOptions]="{standalone: true}" (change)="onChangeDetails($event)">
+              </ckeditor>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Base Price (VND)<span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="number" min="100000" max="100000000" step="100000" placeholder="Enter base price"
+                formControlName="basePrice">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="24">
+            <nz-form-label [nzNoColon]="true">
+              Pictures
+            </nz-form-label>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="8">
+            <nz-form-control>
+              <img [src]="environment.apiHost + formGroup.get('pic1').value" class="img-product" alt="">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col nzSpan="8">
+            <nz-form-control>
+              <img [src]="environment.apiHost + formGroup.get('pic2').value" class="img-product" alt="">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col nzSpan="8">
+            <nz-form-control>
+              <img [src]="environment.apiHost + formGroup.get('pic3').value" class="img-product" alt="">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </app-sts-collapse>
+    </div>
+  </form>
+
+</div>

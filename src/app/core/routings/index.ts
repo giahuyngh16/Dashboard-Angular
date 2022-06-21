@@ -6,6 +6,8 @@ const ROUTING_NAME = {
   CUSTOMER: 'customer',
   STAFF: 'staff',
   USERS: 'user',
+  PRODUCT_DETAIL: 'product-detail',
+  PRODUCT_SIZE: 'product-size',
 };
 
 const ROUTING_PATH = {
@@ -17,6 +19,16 @@ const ROUTING_PATH = {
     ROOT: '/staff',
     CREATE_STAFF: '/staff/create',
     UPDATE_STAFF: '/staff/update',
+  },
+  PRODUCT_DETAIL: {
+    ROOT: '/product-detail',
+    CREATE: '/product-detail/create',
+    UPDATE: '/product-detail/update',
+  },
+  PRODUCT_SIZE: {
+    ROOT: '/product-size',
+    CREATE: '/product-size/create',
+    UPDATE: '/product-size/update',
   },
   USERS: {
     ROOT: '/user',
@@ -141,7 +153,116 @@ const appRoutingsConfig = {
       },
     }
   },
-
+  productDetail: {
+    moduleNamePath: ROUTING_NAME.PRODUCT_DETAIL,
+    path: ROUTING_NAME.PRODUCT_DETAIL,
+    menuLabel: 'Product Detail',
+    data: {
+      roles: [],
+      breadcrumb: [
+        {
+          url: ROUTING_NAME.PRODUCT_DETAIL,
+          navMenuLabel: 'Product Detail'
+        }
+      ],
+      url: ROUTING_NAME.PRODUCT_DETAIL
+    },
+    children: {
+      createProductDetail: {
+        moduleNamePath: '',
+        path: ROUTING_PATH.PRODUCT_DETAIL.CREATE,
+        menuLabel: 'Create New Product Detail',
+        data: {
+          roles: [],
+          breadcrumb: [
+            {
+              url: ROUTING_NAME.PRODUCT_DETAIL,
+              navMenuLabel: 'Product Detail'
+            },
+            {
+              url: ROUTING_PATH.PRODUCT_DETAIL.CREATE,
+              navMenuLabel: 'Create New Product Detail'
+            },
+          ],
+          url: ROUTING_PATH.PRODUCT_DETAIL.CREATE
+        }
+      },
+      updateProductDetail: {
+        moduleNamePath: '',
+        path: ROUTING_PATH.PRODUCT_DETAIL.UPDATE,
+        menuLabel: 'Update Product Detail',
+        data: {
+          roles: [],
+          breadcrumb: [
+            {
+              url: ROUTING_NAME.PRODUCT_DETAIL,
+              navMenuLabel: 'Product Detail'
+            },
+            {
+              url: ROUTING_PATH.PRODUCT_DETAIL.UPDATE,
+              navMenuLabel: 'Update Product Detail'
+            },
+          ],
+          url: ROUTING_PATH.PRODUCT_DETAIL.UPDATE
+        }
+      },
+    }
+  },
+  productSize: {
+    moduleNamePath: ROUTING_NAME.PRODUCT_SIZE,
+    path: ROUTING_NAME.PRODUCT_SIZE,
+    menuLabel: 'Product Size',
+    data: {
+      roles: [],
+      breadcrumb: [
+        {
+          url: ROUTING_NAME.PRODUCT_SIZE,
+          navMenuLabel: 'Product Size'
+        }
+      ],
+      url: ROUTING_NAME.PRODUCT_SIZE
+    },
+    children: {
+      createProductSize: {
+        moduleNamePath: '',
+        path: ROUTING_PATH.PRODUCT_SIZE.CREATE,
+        menuLabel: 'Create New Product Size',
+        data: {
+          roles: [],
+          breadcrumb: [
+            {
+              url: ROUTING_NAME.PRODUCT_SIZE,
+              navMenuLabel: 'Product Size'
+            },
+            {
+              url: ROUTING_PATH.PRODUCT_SIZE.CREATE,
+              navMenuLabel: 'Create New Product Size'
+            },
+          ],
+          url: ROUTING_PATH.PRODUCT_SIZE.CREATE
+        }
+      },
+      updateProductSize: {
+        moduleNamePath: '',
+        path: ROUTING_PATH.PRODUCT_SIZE.UPDATE,
+        menuLabel: 'Update Product Size',
+        data: {
+          roles: [],
+          breadcrumb: [
+            {
+              url: ROUTING_NAME.PRODUCT_SIZE,
+              navMenuLabel: 'Product Size'
+            },
+            {
+              url: ROUTING_PATH.PRODUCT_SIZE.UPDATE,
+              navMenuLabel: 'Update Product Size'
+            },
+          ],
+          url: ROUTING_PATH.PRODUCT_SIZE.UPDATE
+        }
+      },
+    }
+  },
 };
 
 export { appRoutingsConfig, ROUTING_PATH };

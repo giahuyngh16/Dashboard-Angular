@@ -2,10 +2,10 @@
   <section class="layout-container__header">
       <h3 class="layout-container__title-header">
           <i (click)="back()" nz-icon nzType="arrow-left" nzTheme="outline" class="btn--back"></i>
-          Create New Staff
+          Create New Product Detail
       </h3>
   </section>
-  <app-staff-form formControlName="staff" [formGroup]="formGroup"  [isSubmited]="isSubmited"></app-staff-form>
+  <app-product-detail-form formControlName="productDetail" [isSubmited]="isSubmited"></app-product-detail-form>
   <section class="layout-container__footer">
       <button
           class="btn btn--primary btn--rounded mr-3"

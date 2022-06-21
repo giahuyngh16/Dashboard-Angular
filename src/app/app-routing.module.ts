@@ -38,6 +38,16 @@ const routes: Routes = [
 
   },
   {
+    path: appRoutingsConfig.productDetail.path,
+    loadChildren: () => import('./modules/product-detail/product-detail.module').then(m => m.ProductDetailModule),
+
+  },
+  {
+    path: appRoutingsConfig.productSize.path,
+    loadChildren: () => import('./modules/product-size/product-size.module').then(m => m.ProductSizeModule),
+
+  },
+  {
     path: appRoutingsConfig.unauthorized.path,
     component: UnauthorizedComponent,
     data: {

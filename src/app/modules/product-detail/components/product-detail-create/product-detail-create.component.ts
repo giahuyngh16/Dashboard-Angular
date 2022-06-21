@@ -5,34 +5,27 @@ import { APP_CONFIG } from '@app-core/constants/config.const';
 import { APP_MESSAGE } from '@app-core/constants/messages.const';
 import { IRequestError } from '@app-core/interfaces/request-error.interface';
 import { ROUTING_PATH } from '@app-core/routings';
-import { StaffService } from '@app-modules/staff/services/staff.service';
+import { ProductDetailService } from '@app-modules/product-detail/services/product-detail.service';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-staff-create',
-  templateUrl: './staff-create.component.html',
-  styleUrls: ['./staff-create.component.scss']
+  selector: 'app-product-detail-create',
+  templateUrl: './product-detail-create.component.html',
+  styleUrls: ['./product-detail-create.component.scss']
 })
-export class StaffCreateComponent implements OnInit {
+export class ProductDetailCreateComponent implements OnInit {
   formGroup: FormGroup;
   isSubmited = false;
 
   constructor(
     private _router: Router,
-    private _staffService: StaffService,
+    private _productDetailService: ProductDetailService,
     private _nzNotificationService: NzNotificationService,
     private _nzModalService: NzModalService
   ) { }
 
   ngOnInit() {
-    this.formGroup = new FormGroup({
-      id: new FormControl(null),
-      fullName: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      phoneNumber: new FormControl(null, Validators.required),
-      address: new FormControl(null),
-    });
+    
   }
 
   onSave(isClose = false): void {
@@ -41,20 +34,20 @@ export class StaffCreateComponent implements OnInit {
       return;
     }
 
-    const staff = this.formGroup.value;
-    this._staffService.createStaff(staff).subscribe(
-      (response: any) => {
+    const productDetail = this.formGroup.value;
+    this._productDetailService.createProductDetail(productDetail).subscribe(
+      (productDetailId) => {
         this._nzNotificationService.success(
           APP_MESSAGE.NOTIFICATION.TITLE.SUCCESS,
-          APP_MESSAGE.STAFF.CREATE_SUCCESS,
+          APP_MESSAGE.PRODUCT_DETAIL.CREATE_SUCCESS,
           APP_CONFIG.CONFIG_SUCCESS_NOTIFICATION
         );
         if (isClose) {
-          this._router.navigate([ROUTING_PATH.STAFF.ROOT]);
+          this._router.navigate([ROUTING_PATH.PRODUCT_DETAIL.ROOT]);
         } else {
           this._router.navigate([
-            ROUTING_PATH.STAFF.UPDATE_STAFF,
-            response.data,
+            ROUTING_PATH.PRODUCT_DETAIL.UPDATE,
+            productDetailId,
           ]);
         }
       },
@@ -70,7 +63,7 @@ export class StaffCreateComponent implements OnInit {
   }
 
   back(): void {
-    this._router.navigate(['./staff']);
+    this._router.navigate(['./product-detail']);
   }
 
   onCancel() {
@@ -79,7 +72,7 @@ export class StaffCreateComponent implements OnInit {
         nzTitle: 'Confirm',
         nzContent: APP_MESSAGE.CONFIRM_MESSAGE,
         nzOnOk: () => {
-          this._router.navigate([ROUTING_PATH.STAFF.ROOT]);
+          this._router.navigate([ROUTING_PATH.PRODUCT_DETAIL.ROOT]);
         },
       });
     } else {

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { BaseService } from '@app-core/services/base.service';
 import { IStaff, IStaffFilter } from '../interfaces/staff.interface';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -19,16 +20,16 @@ export class StaffService extends BaseService {
     return this.requestWithLoading().get(`${STAFF_API_PATH.ROOT}`, params);
   }
 
-  createStaff(model: IStaffForm): Observable<string> {
+  createStaff(model: IStaffForm): Observable<any> {
     return this.requestWithLoading().post(STAFF_API_PATH.CREATE, model);
   }
 
   getStaff(id: number): Observable<IStaffDetails> {
-    return this.requestWithLoading().get(`${STAFF_API_PATH.GET}/${id}`);
+    return this.get(`${STAFF_API_PATH.GET}/${id}`).pipe(map((dataResponse) => dataResponse && dataResponse.data));
   }
 
-  updateStaff(id: number, body: any): Observable<any> {
-    return this.requestWithLoading().put(`${STAFF_API_PATH.ROOT}/${id}`, body);
+  updateStaff(body: IStaffForm): Observable<any> {
+    return this.requestWithLoading().put(`${STAFF_API_PATH.UPDATE}`, body);
   }
 
 }

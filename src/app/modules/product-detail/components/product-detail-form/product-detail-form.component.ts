@@ -1,4 +1,5 @@
-import { IStaffForm } from './../../interfaces/staff.interface';
+import { environment } from './../../../../../environments/environment';
+import { IProductDetail } from './../../interfaces/product-detail.interface';
 import { Component, forwardRef, Input, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
 import { AuthService } from '@app-core/services/auth.service';
@@ -6,29 +7,30 @@ import { CKEditor4 } from 'ckeditor4-angular';
 import { RICH_TEXT_CONFIG } from '@app-core/constants/config.const';
 
 @Component({
-  selector: 'app-staff-form',
-  templateUrl: './staff-form.component.html',
-  styleUrls: ['./staff-form.component.scss'],
+  selector: 'app-product-detail-form',
+  templateUrl: './product-detail-form.component.html',
+  styleUrls: ['./product-detail-form.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => StaffFormComponent),
+      useExisting: forwardRef(() => ProductDetailFormComponent),
       multi: true,
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => StaffFormComponent),
+      useExisting: forwardRef(() => ProductDetailFormComponent),
       multi: true,
     },
   ],
 })
-export class StaffFormComponent implements OnInit {
+export class ProductDetailFormComponent implements OnInit {
   @Input() isSubmited = false;
   @Input() formGroup: FormGroup;
   @Input() isUpdate: false;
 
   errorMessage: string;
   editorConfig: CKEditor4.Config = { ...RICH_TEXT_CONFIG };
+  environment = environment;
   constructor(
     private _authService: AuthService
   ) { }
@@ -50,7 +52,7 @@ export class StaffFormComponent implements OnInit {
 
   onTouched: () => void = () => { };
 
-  writeValue(value: IStaffForm): void {
+  writeValue(value: IProductDetail): void {
     value && this.formGroup.setValue(value, { emitEvent: true });
   }
 
@@ -79,18 +81,22 @@ export class StaffFormComponent implements OnInit {
   }
 
   onChangeDetails(event: CKEditor4.EventInfo) {
-    this.formGroup.get('address').patchValue( event.editor.getData());
+    this.formGroup.get('description').patchValue( event.editor.getData());
 }
 
   private _setUpForm(): void {
     if(!this.formGroup && !this.isUpdate){
       this.formGroup = new FormGroup({
         id: new FormControl(null),
-        fullName: new FormControl(null, Validators.required),
-        email: new FormControl(null, Validators.required),
-        password: new FormControl(null, Validators.required),
-        phoneNumber: new FormControl(null, Validators.required),
-        address: new FormControl(null),
+        name: new FormControl(null, Validators.required),
+        price: new FormControl(null, Validators.required),
+        basePrice: new FormControl(null, Validators.required),
+        status: new FormControl(null, Validators.required),
+        description: new FormControl(null, Validators.required),
+        type: new FormControl(null, Validators.required),
+        pic1: new FormControl(null),
+        pic2: new FormControl(null),
+        pic3: new FormControl(null),
       });
     }
   }

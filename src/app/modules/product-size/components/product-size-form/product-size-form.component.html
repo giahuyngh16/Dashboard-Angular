@@ -1,0 +1,39 @@
+<div>
+  <form *ngIf="formGroup" [formGroup]="formGroup" nz-form>
+    <div class="details">
+      <app-sts-collapse headerText="Product Size">
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Name <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="text" readonly placeholder="Enter product name" formControlName="name">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Size <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="number" min="35" max="46" step="1" placeholder="Enter size"
+                formControlName="size" (change)="onChangeSize($event)">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row [nzGutter]="24">
+          <nz-form-item nz-col nzSpan="12">
+            <nz-form-label [nzNoColon]="true">
+              Quantity <span class="text-danger">*</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="This field is required!">
+              <input type="number" min="1" max="50" step="1" placeholder="Enter quantity"
+                formControlName="quantity" (change)="onChangeQuantity($event)">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </app-sts-collapse>
+    </div>
+  </form>
+
+</div>

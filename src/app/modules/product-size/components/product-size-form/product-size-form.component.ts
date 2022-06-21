@@ -1,4 +1,5 @@
-import { IStaffForm } from './../../interfaces/staff.interface';
+import { environment } from './../../../../../environments/environment';
+import { IProductSize } from './../../interfaces/product-size.interface';
 import { Component, forwardRef, Input, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
 import { AuthService } from '@app-core/services/auth.service';
@@ -6,29 +7,30 @@ import { CKEditor4 } from 'ckeditor4-angular';
 import { RICH_TEXT_CONFIG } from '@app-core/constants/config.const';
 
 @Component({
-  selector: 'app-staff-form',
-  templateUrl: './staff-form.component.html',
-  styleUrls: ['./staff-form.component.scss'],
+  selector: 'app-product-size-form',
+  templateUrl: './product-size-form.component.html',
+  styleUrls: ['./product-size-form.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => StaffFormComponent),
+      useExisting: forwardRef(() => ProductSizeFormComponent),
       multi: true,
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => StaffFormComponent),
+      useExisting: forwardRef(() => ProductSizeFormComponent),
       multi: true,
     },
   ],
 })
-export class StaffFormComponent implements OnInit {
+export class ProductSizeFormComponent implements OnInit {
   @Input() isSubmited = false;
   @Input() formGroup: FormGroup;
   @Input() isUpdate: false;
 
   errorMessage: string;
   editorConfig: CKEditor4.Config = { ...RICH_TEXT_CONFIG };
+  environment = environment;
   constructor(
     private _authService: AuthService
   ) { }
@@ -50,7 +52,7 @@ export class StaffFormComponent implements OnInit {
 
   onTouched: () => void = () => { };
 
-  writeValue(value: IStaffForm): void {
+  writeValue(value: IProductSize): void {
     value && this.formGroup.setValue(value, { emitEvent: true });
   }
 
@@ -78,19 +80,36 @@ export class StaffFormComponent implements OnInit {
     return this.formGroup.get(controlName) ? this.formGroup.get(controlName).dirty : null;
   }
 
-  onChangeDetails(event: CKEditor4.EventInfo) {
-    this.formGroup.get('address').patchValue( event.editor.getData());
+  onChangeQuantity(event) {
+    debugger;
+    const selectedQuantity = event.target.value;
+    if (selectedQuantity >= 1 && selectedQuantity <= 50) {
+      this.formGroup.get('quantity').patchValue(selectedQuantity);
+    }
+    else {
+      this.formGroup.get('quantity').patchValue(1);
+    }
+}
+
+onChangeSize(event) {
+  debugger;
+  const selectedSize = event.target.value;
+  if (selectedSize >= 35 && selectedSize <= 46) {
+    this.formGroup.get('size').patchValue(selectedSize);
+  }
+  else {
+    this.formGroup.get('size').patchValue(35);
+  }
 }
 
   private _setUpForm(): void {
     if(!this.formGroup && !this.isUpdate){
       this.formGroup = new FormGroup({
         id: new FormControl(null),
-        fullName: new FormControl(null, Validators.required),
-        email: new FormControl(null, Validators.required),
-        password: new FormControl(null, Validators.required),
-        phoneNumber: new FormControl(null, Validators.required),
-        address: new FormControl(null),
+        name: new FormControl(null, Validators.required),
+        quantity: new FormControl(null, Validators.required),
+        size: new FormControl(null, Validators.required),
+        idProductDetail: new FormControl(null, Validators.required),
       });
     }
   }
